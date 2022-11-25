@@ -30,7 +30,8 @@ module.exports = {
       // Map @uniswap/conedison to its dist folder.
       // This is required because conedison uses * to redirect all imports to its dist.
       webpackConfig.resolve.alias['@uniswap/conedison'] = '@uniswap/conedison/dist'
-
+      delete webpackConfig.devtool
+      
       return webpackConfig
     },
   },
