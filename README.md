@@ -2,15 +2,16 @@
 
 The process is:
 - build static files for a UI --> ensure they conform (no caps, provide mark files for all file extensions)
-
+- glob the files using a fake ship
+- publish the glob
+- update `desk.docket-0`
+- install the app to the fake ship
 
 ## Build static files
 ```
 git clone https://github.com/Uniswap/interface.git
 ```
 Create a `./build` directory by following the CI: https://github.com/Uniswap/interface/blob/main/.github/workflows/4-deploy-to-prod.yml#L25-L26 
-
-TODO: see also below:
 
 ## Install Urbit
 
@@ -56,12 +57,12 @@ cp -r ~/interface/build ~/zod/uniswap
 
 File names cannot have uppercase characters, therefore, all the files in `~/zod/uniswap/build/fonts/` (and elsewhere, if applicable) must
 be changed to lowercase, and then `~/zod/uniswap/build/index.html` updated to reflect those changes. As well, all filepaths in that `index.html` need
-to be prefixed with `/apps/uniswap`. Building build the static files against a root of /apps/uniswap would solve this and probably the other bug too.
+to be prefixed with `/apps/uniswap`. Building the static files against a root of /apps/uniswap would solve this and probably the other bug too.
 
-Fixup more files
+Fixup more files:
 1. in `~/zod/uniswap/mar/map.hoon` put the contents of [this file](https://github.com/urbit/urbit/blob/develop/pkg/arvo/mar/map.hoon)
 2. `cp ~/zod/uniswap/mar/woff2.hoon ~/zod/uniswap/mar/woff.hoon` and edit the only line that has `woff2` to `woff`
-3. delete these files:
+3. delete the following files:
 
 ```
 rm ~/zod/uniswap/desk.bill
@@ -73,7 +74,7 @@ Next, back in the dojo:
 |commit %uniswap
 ```
 
-Next, create an http glob:
+Create the http glob:
 
 ```
 -landscape!make-glob %uniswap /build
