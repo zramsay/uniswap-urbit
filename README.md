@@ -62,7 +62,8 @@ to be prefixed with `/apps/uniswap`. Building the static files against a root of
 Fixup more files:
 1. in `~/zod/uniswap/mar/map.hoon` put the contents of [this file](https://github.com/urbit/urbit/blob/develop/pkg/arvo/mar/map.hoon)
 2. `cp ~/zod/uniswap/mar/woff2.hoon ~/zod/uniswap/mar/woff.hoon` and edit the only line that has `woff2` to `woff`
-3. delete the following files:
+3. `cp ~/zod/uniswap/mar/woff2.hoon ~/zod/uniswap/mar/ttf.hoon` and edit `woff2` to `ttf`
+4. delete the following files:
 
 ```
 rm ~/zod/uniswap/desk.bill
